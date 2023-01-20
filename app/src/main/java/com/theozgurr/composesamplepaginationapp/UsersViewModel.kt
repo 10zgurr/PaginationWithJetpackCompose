@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
-import com.theozgurr.composesamplepaginationapp.UsersPagingSource.Companion.DEFAULT_PAGE_INDEX
+import com.theozgurr.composesamplepaginationapp.UsersPagingSource.Companion.PAGE_SIZE
 
 class UsersViewModel(
     private val repository: UserRemoteRepository
@@ -13,7 +13,7 @@ class UsersViewModel(
 
     val users = Pager(
         config = PagingConfig(
-            pageSize = DEFAULT_PAGE_INDEX,
+            pageSize = PAGE_SIZE,
             enablePlaceholders = false
         ),
         pagingSourceFactory = {
@@ -21,5 +21,7 @@ class UsersViewModel(
                 repository = repository
             )
         }
-    ).flow.cachedIn(viewModelScope)
+    )
+        .flow
+        .cachedIn(scope = viewModelScope)
 }
