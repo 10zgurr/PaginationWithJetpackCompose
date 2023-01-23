@@ -2,7 +2,6 @@ package com.theozgurr.composesamplepaginationapp
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import kotlinx.coroutines.delay
 
 class UsersPagingSource(
     private val repository: UserRemoteRepository
@@ -13,7 +12,6 @@ class UsersPagingSource(
             val perPage = params.key ?: PAGE_SIZE
             val since = perPage - PAGE_SIZE
             val users = repository.getUsers(since = since, perPage = perPage)
-            delay(timeMillis = 1500)
             LoadResult.Page(
                 data = users,
                 prevKey = null,

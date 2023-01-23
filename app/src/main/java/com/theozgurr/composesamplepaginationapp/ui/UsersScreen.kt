@@ -43,10 +43,7 @@ fun UsersScreen(
             Arrangement.Top
     ) {
         items(items = users) { user ->
-            Text(
-                modifier = Modifier.padding(all = 32.dp),
-                text = user?.nickname ?: ""
-            )
+            UserItem(user = user)
         }
         when (users.loadState.refresh) {
             LoadState.Loading -> {
@@ -85,4 +82,12 @@ fun UsersScreen(
             is LoadState.NotLoading -> Unit
         }
     }
+}
+
+@Composable
+fun UserItem(user: UserDto?) {
+    Text(
+        modifier = Modifier.padding(all = 32.dp),
+        text = user?.nickname ?: ""
+    )
 }

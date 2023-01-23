@@ -39,6 +39,18 @@ fun PreviewEmptyUsersScreen() {
 
 @Composable
 @PreviewWithBackground
+fun PreviewPaginationUserItem() {
+    ComposeSamplePaginationAppTheme {
+        UserItem(
+            user = UserDto(
+                nickname = "test_nickname"
+            )
+        )
+    }
+}
+
+@Composable
+@PreviewWithBackground
 fun PreviewPaginationLoadingItem() {
     ComposeSamplePaginationAppTheme {
         PaginationLoadingItem()
