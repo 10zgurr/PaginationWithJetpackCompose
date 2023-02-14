@@ -7,7 +7,7 @@ interface UserApi {
 
     @GET("users")
     suspend fun getUsers(
-        @Query("since") since: Int?,
-        @Query("per_page") perPage: Int?
+        @Query("since") since: Int,
+        @Query("per_page") perPage: Int
     ): List<UserDto>
 }
